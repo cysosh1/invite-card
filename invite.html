@@ -6,24 +6,31 @@
   <title>Приглашение</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: url('https://i.pinimg.com/1200x/a9/bf/16/a9bf169fe16347c01060dc0c9106c7e8.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #4a0033;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
+      position: relative;
+    }
 
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: url('https://i.pinimg.com/1200x/a9/bf/16/a9bf169fe16347c01060dc0c9106c7e8.jpg') no-repeat center center fixed;
-  background-size: cover;
-  color: #4a0033;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  text-align: center;
-  padding: 20px;
-  overflow: hidden;
-  position: relative;
-}
-
+    /* затемняющий слой для читаемости текста */
+    body::before {
+      content: '';
+      position: absolute;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(255, 255, 255, 0.3);
+      z-index: -1;
+    }
 
     h1 {
       font-family: 'Playfair Display', serif;
@@ -89,7 +96,7 @@ body {
       z-index: 2;
     }
 
-    /* Сердечки */
+    /* сердечки */
     .heart {
       position: absolute;
       color: #ff4081;
@@ -125,13 +132,13 @@ body {
   <div class="footer">С любовью 💕</div>
 
   <script>
-    // Показ адреса и времени
+    // показать адрес и время
     document.getElementById('showInfo').addEventListener('click', () => {
       const info = document.getElementById('infoBlock');
       info.style.display = 'block';
     });
 
-    // Создание плавающих сердечек
+    // создание сердечек
     const createHeart = () => {
       const heart = document.createElement('div');
       heart.classList.add('heart');
@@ -141,11 +148,9 @@ body {
       heart.style.fontSize = Math.random() * 30 + 10 + 'px';
       heart.style.animationDuration = (3 + Math.random() * 3) + 's';
       document.body.appendChild(heart);
-
       setTimeout(() => heart.remove(), 6000);
     };
 
-    // Создаём новое сердечко каждые 700 мс
     setInterval(createHeart, 700);
   </script>
 </body>
